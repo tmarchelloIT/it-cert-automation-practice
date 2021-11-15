@@ -9,6 +9,10 @@ def validate_user(username, minlen):
     if minlen < 1:
         raise ValueError("minlen must be at least 1")
     
+    if username[0].isalnum():
+   	 return True
+    return False
+   
     # Usernames can't be shorter than minlen
     if len(username) < minlen:
         return False
@@ -20,5 +24,7 @@ def validate_user(username, minlen):
         return False
     return True
 
-
-
+print(validate_user("blue.kale",3)) #true
+print(validate_user(".blue.kale",3)) # currently true, should be false
+print(validate_user("red_quinoa",4)) #true
+print(validate_user("_red_quinoa",4)) #currently true, should be false
